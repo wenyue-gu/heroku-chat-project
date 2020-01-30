@@ -138,6 +138,14 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
+#REDIS_URL = 'redis'
+#os.environ['REDIS_URL']
+#redis = redis.from_url(REDIS_URL)
+
+#import redis
+#r = redis.from_url(os.environ.get('REDIS_URL'))
+
+
 ASGI_APPLICATION = 'test_project.routing.application'
 CHANNEL_LAYERS = {
     'default': {
@@ -147,18 +155,15 @@ CHANNEL_LAYERS = {
         },
     },
 }
+CACHES = {
+   'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': os.environ.get('REDIS_URL'),
+   }
+}
 
 
 SITE_ID = 1
 
 
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

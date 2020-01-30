@@ -12,6 +12,7 @@ services:
     #command: gunicorn test_project.wsgi -b 0.0.0.0:8000
     #command: daphne test_project.asgi:application
     command: daphne -p 8000 --bind 0.0.0.0 -v2 test_project.asgi:application
+    restart: always
     volumes:
       - .:/code
     ports:
