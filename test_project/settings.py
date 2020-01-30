@@ -25,7 +25,7 @@ SECRET_KEY = 'o6rxs+n(4=(*exwnf$7bth!pkn^k$1wk!q(iz)6z39bn=_c)_+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mighty-stream-60397.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['mighty-stream-60397.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
