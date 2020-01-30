@@ -1,0 +1,1 @@
+web: daphne -p 8000 --bind 0.0.0.0 -v2 test_project.asgi:application
