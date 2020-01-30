@@ -14,9 +14,12 @@
 
 <script>
     var roomName = "{{ room_name|escapejs }}";
-
+    var wsStart = 'ws://';
+    if (loc.protocol == 'https:') {
+        wsStart = 'wss://'
+    }
     var chatSocket = new WebSocket(
-        'wss://' + window.location.host +
+        wsStart + window.location.host +
         '/ws/chat/' + roomName + '/');
 
     chatSocket.onmessage = function(e) {
