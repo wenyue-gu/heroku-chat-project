@@ -10,4 +10,5 @@ release:
   image: web
   
 run:
-  web: python manage.py runserver
+  #web: python manage.py runserver
+  web: gunicorn test_project.wsgi
