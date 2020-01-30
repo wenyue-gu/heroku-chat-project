@@ -8,8 +8,6 @@ build:
     
 release:
   image: web
-  command:
-    - python manage.py runserver
-
+  
 run:
   web: python manage.py runserver
