@@ -12,4 +12,5 @@ release:
 run:
   #web: python manage.py runserver
   #web: gunicorn test_project.wsgi
-  web: daphne -p 8000 --bind 0.0.0.0 -v2 test_project.asgi:application
+  #web: daphne -p 8000 --bind 0.0.0.0 -v2 test_project.asgi:application
+  web: daphne test_project.asgi:application
