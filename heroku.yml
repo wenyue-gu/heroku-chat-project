@@ -12,4 +12,4 @@ release:
 run:
   #web: python manage.py runserver
   #web: gunicorn test_project.wsgi
-  wen: daphne test_project.asgi
+  web: daphne test_project.asgi
