@@ -155,12 +155,7 @@ CHANNEL_LAYERS = {
         },
     },
 }
-#CACHES = {
-#   'default': {
-#        'BACKEND': 'redis_cache.RedisCache',
-#        'LOCATION': os.environ.get('REDIS_URL'),
-#   }
-#}
+
 
 
 SITE_ID = 1
@@ -178,3 +173,18 @@ DATABASES['default'].update(db_from_env)
 #    SESSION_COOKIE_SECURE = True
 #    CSRF_COOKIE_SECURE = True
 #    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+import urllib.parse
+
+redis_url = urllib.parse.urlparse(os.environ.get('REDISTOGO_URL', 'redis://localhost:6959'))
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '%s:%s' % (redis_url.hostname, redis_url.port),
+        'OPTIONS': {
+            'DB': 0,
+            'PASSWORD': redis_url.password,
+        }
+    }
+}
